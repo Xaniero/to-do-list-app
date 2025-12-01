@@ -4,50 +4,130 @@
   <meta charset="UTF-8">
   <title>To-Do List Interaktif</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="site-header">
-    <h1>Aplikasi To-Do List</h1>
-    <p class="subtitle">
-      Tambahkan tugas, tandai selesai, dan hapus tugas yang sudah tidak diperlukan.
-    </p>
-  </header>
 
-  <main class="site-main">
-    <!-- Form input tugas -->
-    <section class="card">
-      <h2>Tambah Tugas Baru</h2>
-      <form id="todo-form" class="todo-form">
-        <input
-          type="text"
-          id="todo-input"
-          placeholder="Tulis nama tugas, misalnya: Belajar JavaScript"
-        >
-        <button type="submit">Tambah</button>
+  <div class="background-mesh">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <main class="app-container">
+    <header class="app-header">
+      <div class="header-text">
+        <h1>To Do List</h1>
+        <p class="date-display" id="date-display">Memuat tanggal...</p>
+      </div>
+      
+      <div class="progress-ring-container">
+        <svg class="progress-ring" width="60" height="60">
+          <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.3)" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+          <circle class="progress-ring__circle" id="progress-circle" stroke="white" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+        </svg>
+        <div class="progress-text" id="progress-text">0%</div>
+      </div>
+    </header>
+
+    <section class="input-section">
+      <form id="todo-form" class="floating-form">
+        <div class="category-select-wrapper">
+          <select id="todo-category" title="Pilih Kategori">
+            <option value="business">💼</option>
+            <option value="personal">🏠</option>
+            <option value="shopping">🛒</option>
+            <option value="health">💪</option>
+          </select>
+        </div>
+        
+        <input type="text" id="todo-input" placeholder="Apa target hari ini?" autocomplete="off">
+        
+        <div class="date-input-wrapper">
+          <input type="date" id="todo-date" title="Tenggat Waktu">
+        </div>
+
+        <button type="submit" class="btn-add" title="Tambah Tugas">
+          <i class="fas fa-plus"></i>
+        </button>
       </form>
-      <p id="error-message" class="error-message"></p>
     </section>
 
-    <!-- Daftar tugas -->
-    <section class="card">
-      <h2>Daftar Tugas</h2>
-      <ul id="todo-list" class="todo-list">
-        <!-- Contoh item awal (boleh dihapus) -->
-        <li class="todo-item">
-          <span class="todo-text">Contoh tugas pertama</span>
-          <div class="todo-actions">
-            <button class="btn-complete">Selesai</button>
-            <button class="btn-delete">Hapus</button>
-          </div>
-        </li>
-      </ul>
+    <section class="controls">
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="active">Proses</button>
+        <button class="filter-btn" data-filter="completed">Selesai</button>
+      </div>
+      
+      <div class="sort-wrapper">
+        <i class="fas fa-sort-amount-down sort-icon"></i>
+        <select id="sort-select">
+          <option value="newest">Terbaru</option>
+          <option value="deadline">Prioritas Waktu</option>
+          <option value="az">Nama (A-Z)</option>
+        </select>
+      </div>
     </section>
+
+    <div class="list-container">
+      <ul id="todo-list" class="todo-list">
+        </ul>
+
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-illustration">
+          <i class="fas fa-rocket"></i>
+          <div class="stars">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <h3>Semua Beres!</h3>
+        <p>Saatnya bersantai atau buat target baru.</p>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <small>To-Do List Interaktif</small>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; 2025 • To-Do List Interaktif • Front-End Web Development</small>
-  </footer>
+  <div id="edit-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Edit Tugas</h3>
+        <button class="btn-icon-close" id="btn-close-modal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Kategori</label>
+          <div class="custom-select">
+            <select id="edit-category">
+              <option value="business">💼 Pekerjaan</option>
+              <option value="personal">🏠 Personal</option>
+              <option value="shopping">🛒 Belanja</option>
+              <option value="health">💪 Kesehatan</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nama Tugas</label>
+          <input type="text" id="edit-input" placeholder="Ubah nama tugas...">
+        </div>
+        <div class="form-group">
+          <label>Tenggat Waktu</label>
+          <input type="date" id="edit-date">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-save-edit" class="btn-primary">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <canvas id="confetti-canvas"></canvas>
 
   <script src="script.js"></script>
 </body>
