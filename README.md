@@ -48,9 +48,10 @@ Anda tidak perlu menginstal dependensi apa pun (seperti Node.js atau Python) kar
 
 Clone repositori ini (atau download ZIP):
 
-Bash
+```Bash
 
-git clone [https://github.com/username-anda/nama-repo-todo.git](https://github.com/username-anda/nama-repo-todo.git)
+git clone https://github.com/Xaniero/to-do-list-app/
+```
 Buka Folder Proyek: Masuk ke direktori tempat file disimpan.
 
 Jalankan Aplikasi: Klik dua kali file index.html untuk membukanya di browser favorit Anda (Chrome, Firefox, Edge, dll).
