@@ -8,12 +8,6 @@ Aplikasi To-Do List berbasis web yang modern, responsif, dan interaktif. Dibangu
 
 ---
 
-## 📸 Tampilan Antarmuka
-
-![Screenshot Aplikasi](https://via.placeholder.com/800x400.png?text=Screenshot+Aplikasi+To-Do+List)
-
----
-
 ## 🚀 Fitur Utama
 
 Aplikasi ini bukan sekadar daftar tugas biasa. Berikut adalah fitur unggulannya:
@@ -47,6 +41,8 @@ Aplikasi ini bukan sekadar daftar tugas biasa. Berikut adalah fitur unggulannya:
 ├── style.css       # Styling, variabel warna, dan animasi CSS
 ├── script.js       # Logika aplikasi, manipulasi DOM, dan LocalStorage
 └── README.md       # Dokumentasi proyek ini
+```
+
 💻 Cara Menjalankan
 Anda tidak perlu menginstal dependensi apa pun (seperti Node.js atau Python) karena ini adalah aplikasi web statis murni.
 
